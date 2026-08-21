@@ -1,0 +1,24 @@
+telethon==1.36.0
+cryptg==0.4.0
+
+# yt-dlp with the [default] extra (subtitle/format processing) and
+# [curl-cffi] (real Chrome/Firefox/Safari TLS-fingerprint impersonation).
+# The latter fixes "HTTP Error 403: Forbidden" on Cloudflare/anti-bot
+# protected sites (e.g. PornHub) that explicitly request impersonate=True.
+# Kept as a floor version so it keeps up with YouTube's frequent changes;
+# bump it if "Requested format is not available" reappears.
+yt-dlp[default,curl-cffi]>=2026.8.19
+
+# YouTube PO Token provider: without a real Proof-of-Origin token, YouTube
+# serves invalid/throttled URLs for high quality (720p+) DASH formats,
+# causing "The downloaded file is empty". Paired with Deno (see
+# Dockerfile) this generates a real token automatically; no manual setup.
+bgutil-ytdlp-pot-provider==1.3.1
+
+aiosqlite==0.20.0
+aiohttp==3.10.10
+python-dotenv==1.0.1
+
+# Embeds ID3 tags (title/artist/cover) for SoundCloud tracks. Lightweight,
+# pure-Python, no heavy dependencies.
+mutagen==1.47.0
